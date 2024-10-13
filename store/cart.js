@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
-import {useToast} from "vue-toastification";
+import * as Toast from "vue-toastification/dist/index.mjs"
+const { useToast } = Toast
 
 export const useGeneralStore = defineStore('general', () => {
     const cartProducts = ref([])
