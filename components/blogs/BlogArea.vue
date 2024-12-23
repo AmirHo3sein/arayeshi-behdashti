@@ -5,7 +5,7 @@
         <div class="col-xl-12">
           <div class="section__title-wrapper text-center mb-55">
             <div class="section__title mb-10">
-              <h2 class="theme-color">وبلاگ ما</h2>
+              <h2 class="theme-color">مجله</h2>
             </div>
             <div class="section__sub-title">
               <p>

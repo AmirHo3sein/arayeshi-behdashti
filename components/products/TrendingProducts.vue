@@ -40,7 +40,7 @@ export default defineComponent({
         <div class="col-xl-12">
           <div :class="`section__title-wrapper text-center mb-55 ${style_2 ? 'p-relative' : ''}`">
             <div class="section__title mb-10">
-              <h2 class="theme-color">محصولات ترند</h2>
+              <h2 class="theme-color">پرفروش ترین ها</h2>
             </div>
             <div class="section__sub-title">
               <p>

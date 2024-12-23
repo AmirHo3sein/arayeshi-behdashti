@@ -6,7 +6,7 @@
         <div class="col-xl-12">
           <div class="section__title-wrapper text-center mb-55">
             <div class="section__title mb-10">
-              <h2 class="theme-color">فروش ویژه</h2>
+              <h2 class="theme-color">جدیدترین ها</h2>
             </div>
             <div class="section__sub-title">
               <p>

@@ -7,6 +7,8 @@ import ClientBrandSliderTwo from "~/components/client-brands/ClientBrandSliderTw
 import SaleOffProduct from "~/components/products/SaleOffProduct.vue";
 import BlogArea from "~/components/blogs/BlogArea.vue";
 import {useMyFetch} from "~/composables/my-fetch";
+import homeFirstBanner from '~/assets/img/bg/home-banner-one.jpg';
+import homeSecondBanner from '~/assets/img/bg/home-banner-two.jpg';
 
 useHead({
   title: "Home",
@@ -38,9 +40,15 @@ const blogList = computed(() => data.value?.data.blog_list.list || [])
 
       <trending-products :style_2="true" :trending-products="trendProducts"/>
     </div>
-    <div class="theme-bg pt-80">
+    <div class="w-full mb-40">
+      <img :src="homeFirstBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important;"/>
+    </div>
+    <div class="theme-bg pt-80 mb-45">
       <p class="text-center h3 text-white mb-30">برندها</p>
       <ClientBrandSliderTwo :brands="brandsList"/>
+    </div>
+    <div class="w-full mb-40">
+      <img :src="homeSecondBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important;"/>
     </div>
     <div class="box-25">
 

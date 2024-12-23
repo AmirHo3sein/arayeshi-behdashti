@@ -4,7 +4,7 @@
     <div id="header-sticky" :class="`header__area header__primary box-25 ${isSticky ? 'sticky' : ''}`">
       <div class="container-fluid">
         <div class="row  align-items-center">
-          <div class="col-xl-5 col-lg-5">
+          <div class="col-xl-8 col-lg-8">
             <div class="main-menu d-none d-lg-block p-relative">
               <nav>
                 <menus/>
@@ -12,16 +12,16 @@
             </div>
           </div>
 
-          <div class="col-xl-4 col-lg-3 col-md-4 col-sm-4 ">
-            <div class="logo">
-              <nuxt-link href="/">
-                <!--                          <img src="~/assets/img/logo/logo.png" alt="logo">-->
-                <h4 class="white-color mx-5">دکتر ژیلا لوگو</h4>
-              </nuxt-link>
-            </div>
-          </div>
+<!--          <div class="col-xl-3 col-lg-2 col-md-4 col-sm-4 ">-->
+<!--            <div class="logo">-->
+<!--              <nuxt-link href="/">-->
+<!--                &lt;!&ndash;                          <img src="~/assets/img/logo/logo.png" alt="logo">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4 class="white-color mx-5"> لوگو</h4>&ndash;&gt;-->
+<!--              </nuxt-link>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="col-xl-3 col-lg-4 col-md-8 col-sm-8">
+          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
             <div
                 class="header__right p-relative d-flex justify-content-between justify-content-sm-end align-items-center ">
               <div @click.prevent="handleOffcanvas" class="mobile-menu-btn d-lg-none">
