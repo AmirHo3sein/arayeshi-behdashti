@@ -40,15 +40,15 @@ const blogList = computed(() => data.value?.data.blog_list.list || [])
 
       <trending-products :style_2="true" :trending-products="trendProducts"/>
     </div>
-    <div class="w-full mb-40">
-      <img :src="homeFirstBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important;"/>
+    <div class="w-full mb-40 " >
+      <img :src="homeFirstBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important; max-height: 90vh"/>
     </div>
     <div class="theme-bg pt-80 mb-45">
       <p class="text-center h3 text-white mb-30">برندها</p>
       <ClientBrandSliderTwo :brands="brandsList"/>
     </div>
-    <div class="w-full mb-40">
-      <img :src="homeSecondBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important;"/>
+    <div class="w-full mb-40 " >
+      <img :src="homeSecondBanner" alt="banner" class="w-full object-fit-cover" style="width: 100%!important; max-height: 90vh"/>
     </div>
     <div class="box-25">
 
