@@ -23,7 +23,7 @@
               ${activeMenu === menu.title ? 'active' : ''}`"
             >
               <a @click.prevent="handleOpenMenu(menu.title)">
-                {{menu.title}}
+                {{ menu.title }}
               </a>
               <ul
                   @click.prevent="showSidebar = false"
@@ -31,7 +31,7 @@
               >
                 <li v-for="(sub_m, index) in menu.dropdownMenu" :key="index">
                   <nuxt-link :href="`${sub_m.link}`">
-                    {{sub_m.title}}
+                    {{ sub_m.title }}
                   </nuxt-link>
                 </li>
               </ul>
@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import {defineComponent, ref} from "vue";
 import menuData from "~~/mixins/menuData";
 
 // menu type
@@ -93,6 +93,7 @@ export default defineComponent({
     const mobile_menus = ref<MenuDataType[]>([
       {
         title: "پیشنهاد ویژه",
+        link: "/shop",
         dropdown: false,
         link: "/special-offers",
         dropdownMenu: []
@@ -101,97 +102,70 @@ export default defineComponent({
         title: "برندها",
         dropdown: true,
         dropdownMenu: [
-          { link: '/brands/brand-1', title: 'برند 1' },
-          { link: '/brands/brand-2', title: 'برند 2' },
-          { link: '/brands/brand-3', title: 'برند 3' },
-          { link: '/brands/brand-4', title: 'برند 4' },
-          { link: '/brands/brand-5', title: 'برند 5' },
+          {link: '/brands/brand-1', title: 'برند 1'},
+          {link: '/brands/brand-2', title: 'برند 2'},
+          {link: '/brands/brand-3', title: 'برند 3'},
+          {link: '/brands/brand-4', title: 'برند 4'},
+          {link: '/brands/brand-5', title: 'برند 5'},
         ],
       },
       {
         title: "آرایشی",
         dropdown: true,
         dropdownMenu: [
-          { link: '/cosmetics/foundation', title: 'کرم پودر' },
-          { link: '/cosmetics/lipstick', title: 'رژ لب' },
-          { link: '/cosmetics/mascara', title: 'ریمل' },
-          { link: '/cosmetics/eyeshadow', title: 'سایه چشم' },
-          { link: '/cosmetics/blush', title: 'رژگونه' },
-          { link: '/cosmetics/brushes', title: 'قلم مو' },
-          { link: '/cosmetics/sponges', title: 'پف آرایشی' },
+          {link: '/shop', title: 'کرم پودر'},
+          {link: '/shop', title: 'رژ لب'},
+          {link: '/shop', title: 'ریمل'},
+          {link: '/shop', title: 'سایه چشم'},
+          {link: '/shop', title: 'رژگونه'},
+          {link: '/shop', title: 'قلم مو'},
+          {link: '/shop', title: 'پف آرایشی'},
         ],
       },
       {
         title: "مراقبت پوست",
+        link: "/shop",
         dropdown: false,
-        dropdownMenu: [
-          { link: '/skincare/cleansers', title: 'پاک کننده' },
-          { link: '/skincare/moisturizers', title: 'مرطوب کننده' },
-          { link: '/skincare/serums', title: 'سرم' },
-          { link: '/skincare/masks', title: 'ماسک' },
-          { link: '/skincare/sunscreen', title: 'ضد آفتاب' },
-          { link: '/skincare/toners', title: 'تونر' },
-        ],
+        dropdownMenu: [],
       },
       {
         title: "بهداشت و مراقبت مو",
+        link: "/shop",
         dropdown: false,
-        dropdownMenu: [
-          { link: '/hair-care/shampoo', title: 'شامپو' },
-          { link: '/hair-care/conditioner', title: 'نرم کننده' },
-          { link: '/hair-care/hair-mask', title: 'ماسک مو' },
-          { link: '/hair-care/styling', title: 'استایلینگ' },
-          { link: '/hair-care/treatments', title: 'درمان مو' },
-          { link: '/hair-care/hair-tools', title: 'ابزار مو' },
-        ],
+        dropdownMenu: [],
       },
       {
         title: "بهداشت دهان و دندان",
+        link: "/shop",
         dropdown: false,
-        dropdownMenu: [
-          { link: '/oral-care/toothpaste', title: 'خمیر دندان' },
-          { link: '/oral-care/toothbrush', title: 'مسواک' },
-          { link: '/oral-care/mouthwash', title: 'دهان شوی' },
-          { link: '/oral-care/dental-floss', title: 'نخ دندان' },
-          { link: '/oral-care/whitening', title: 'سفید کننده' },
-        ],
+        dropdownMenu: [],
       },
       {
         title: "بهداشت خانه",
+        link: "/shop",
         dropdown: false,
-        dropdownMenu: [
-          { link: '/home-care/detergents', title: 'مواد شوینده' },
-          { link: '/home-care/disinfectants', title: 'ضد عفونی کننده' },
-          { link: '/home-care/air-fresheners', title: 'خوشبو کننده' },
-          { link: '/home-care/cleaning-tools', title: 'ابزار نظافت' },
-          { link: '/home-care/laundry', title: 'لباسشویی' },
-        ],
+        dropdownMenu: [],
       },
       {
         title: "کودک",
+        link: "/shop",
         dropdown: false,
-        dropdownMenu: [
-          { link: '/kids/baby-care', title: 'مراقبت نوزاد' },
-          { link: '/kids/diapers', title: 'پوشک' },
-          { link: '/kids/baby-food', title: 'غذای کودک' },
-          { link: '/kids/toys', title: 'اسباب بازی' },
-          { link: '/kids/clothing', title: 'لباس کودک' },
-          { link: '/kids/hygiene', title: 'بهداشت کودک' },
-        ],
+        dropdownMenu: [],
       },
       {
         title: "مجله لاوورا",
+        link: "/blog",
         dropdown: false,
         dropdownMenu: [
-          { link: '/magazine/beauty-tips', title: 'نکات زیبایی' },
-          { link: '/magazine/health', title: 'سلامت' },
-          { link: '/magazine/lifestyle', title: 'سبک زندگی' },
-          { link: '/magazine/tutorials', title: 'آموزش ها' },
-          { link: '/magazine/news', title: 'اخبار' },
+          {link: '/blog', title: 'نکات زیبایی'},
+          {link: '/blog', title: 'سلامت'},
+          {link: '/blog', title: 'سبک زندگی'},
+          {link: '/blog', title: 'آموزش ها'},
+          {link: '/blog', title: 'اخبار'},
         ],
       },
     ]);
-    return { mobile_menus };
+    return {mobile_menus};
   },
 });
 </script>
