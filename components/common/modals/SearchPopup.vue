@@ -1,5 +1,5 @@
 <template>
-  <section :class="`header__search white-bg transition-3 ${showSearch?'search-opened':''}`">
+  <section :class="`header__search  transition-3 ${showSearch?'search-opened':''}`">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -34,7 +34,7 @@
     </div>
   </section>
   <!-- body overlay start -->
-  <div @click="showSearch = false" 
+  <div @click="showSearch = false"
    :class="`body-overlay transition-3 ${showSearch?'opened':''}`">
   </div>
   <!-- body overlay end -->

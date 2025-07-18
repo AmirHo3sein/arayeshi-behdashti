@@ -13,14 +13,6 @@
         </a>
       </div>
 
-      <!-- Logo in mobile menu -->
-      <div class="extra__info-logo text-center mb-4">
-        <nuxt-link href="/" @click="showSidebar = false">
-          <img src="~/assets/img/logo/lavora-logo.png" alt="لاوورا" class="mobile-logo-img">
-          <h4 class="white-color mobile-logo-text">لاوورا</h4>
-        </nuxt-link>
-      </div>
-
       <!-- side-mobile-menu start -->
       <nav class="side-mobile-menu d-block d-lg-none mm-menu">
         <ul>
@@ -131,7 +123,7 @@ export default defineComponent({
       },
       {
         title: "مراقبت پوست",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/skincare/cleansers', title: 'پاک کننده' },
           { link: '/skincare/moisturizers', title: 'مرطوب کننده' },
@@ -143,7 +135,7 @@ export default defineComponent({
       },
       {
         title: "بهداشت و مراقبت مو",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/hair-care/shampoo', title: 'شامپو' },
           { link: '/hair-care/conditioner', title: 'نرم کننده' },
@@ -155,7 +147,7 @@ export default defineComponent({
       },
       {
         title: "بهداشت دهان و دندان",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/oral-care/toothpaste', title: 'خمیر دندان' },
           { link: '/oral-care/toothbrush', title: 'مسواک' },
@@ -166,7 +158,7 @@ export default defineComponent({
       },
       {
         title: "بهداشت خانه",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/home-care/detergents', title: 'مواد شوینده' },
           { link: '/home-care/disinfectants', title: 'ضد عفونی کننده' },
@@ -177,7 +169,7 @@ export default defineComponent({
       },
       {
         title: "کودک",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/kids/baby-care', title: 'مراقبت نوزاد' },
           { link: '/kids/diapers', title: 'پوشک' },
@@ -189,7 +181,7 @@ export default defineComponent({
       },
       {
         title: "مجله لاوورا",
-        dropdown: true,
+        dropdown: false,
         dropdownMenu: [
           { link: '/magazine/beauty-tips', title: 'نکات زیبایی' },
           { link: '/magazine/health', title: 'سلامت' },
@@ -203,34 +195,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.mobile-logo-img {
-  max-height: 40px;
-  width: auto;
-}
-
-.mobile-logo-text {
-  display: none;
-}
-
-/* Show text logo if image fails to load */
-.mobile-logo-img:not([src]), .mobile-logo-img[src=""] {
-  display: none;
-}
-
-.mobile-logo-img:not([src]) + .mobile-logo-text, .mobile-logo-img[src=""] + .mobile-logo-text {
-  display: block;
-}
-
-.extra__info-logo {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-}
-
-.extra__info-logo a {
-  display: block;
-  text-decoration: none;
-}
-</style>

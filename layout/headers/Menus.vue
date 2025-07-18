@@ -23,8 +23,9 @@
       <ul
         v-if="item.hasDropdown && item.megamenu"
         class="submenu transition-3"
-        :style="{ backgroundImage: `url(${bg})` }"
       >
+        <!--        :style="{ backgroundImage: `url(${bg})` }"-->
+
         <li
           v-for="(m_mnu, index) in item.dropdownItems"
           :key="index"

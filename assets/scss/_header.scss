@@ -35,6 +35,10 @@
     background: $theme-color;
   }
 
+  &__white {
+    background: white;
+  }
+
   &__transparent {
     position: absolute;
     top: 0;
@@ -96,7 +100,7 @@
           }
 
           & i {
-            color: $white;
+            color: $black;
             margin-right: 3px;
             font-size: 18px;
           }
@@ -426,7 +430,7 @@
   -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
   -webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
-  background: $theme-color !important;
+  background: $white !important;
 }
 
 .main-menu {
@@ -443,15 +447,15 @@
 
       & a {
         display: block;
-        color: $white;
+        color: $black;
         font-weight: 500;
-        padding: 27px 0 30px;
+        padding: 8px 0 14px;
         text-transform: capitalize;
       }
 
       &.active {
         & a {
-          color: $white;
+          color: $black;
         }
       }
 
@@ -487,7 +491,7 @@
       & ul.submenu {
         position: absolute;
         top: 100%;
-        right: -40px;
+        right: 0;
         background-color: $white;
         min-width: 200px;
         padding: 15px 0;
@@ -519,52 +523,44 @@
         }
       }
 
-      &.mega-menu {
+      &.mega-menu{
         position: static;
-
-        & ul.submenu {
-          background-repeat: no-repeat;
-          background-size: auto;
-          background-position: center right;
-          background-attachment: scroll;
-          width: 99vw;
-          padding: 20px;
-
-          & li {
-            float: left;
+        & ul.submenu{
+          //background-repeat: no-repeat;
+          //background-size: auto;
+          //background-position: right;
+          //background-attachment: scroll;
+          width: 70%;
+          padding: 40px 35px;
+          & li{
+            float: right;
             display: block;
-            width: 25%;
-
-            & a {
+            width: 30%;
+            & a{
               color: $black-2;
               margin-bottom: 20px;
               padding: 0;
-
-              &::after {
+              &::after{
                 display: none;
               }
             }
+            & ul{
 
-            & ul {
-
-              & li {
+              & li{
                 float: none;
                 width: 100%;
                 padding-left: 0;
-
-                & a {
+                & a{
                   font-size: 12px;
                   color: $black-soft;
                   margin-bottom: 0;
                   padding-bottom: 12px;
-
-                  &:hover {
+                  &:hover{
                     color: $black-2;
                   }
                 }
-
-                &:last-child {
-                  & a {
+                &:last-child{
+                  & a{
                     padding-bottom: 0;
                   }
                 }
@@ -572,14 +568,12 @@
             }
           }
         }
-
-        &.mega-menu-2 {
-          & ul.submenu {
+        &.mega-menu-2{
+          & ul.submenu{
             @media #{$lg}{
               background: none;
             }
-
-            & > li {
+            & > li{
               @media #{$lg}{
                 width: 33.33%;
               }
@@ -625,9 +619,12 @@
 
 /* mobile menu*/
 .mobile-menu-btn {
+  position: absolute;
+  right: -4px;
+  top: 24px;
   & a {
     font-size: 18px;
-    color: $white;
+    color: $black;
   }
 }
 
@@ -844,4 +841,28 @@
       }
     }
   }
+}
+
+.promotional-banner {
+  background-color: $burgundy;
+}
+
+.banner-close {
+  background-color: $burgundy;
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+.search-container{
+  min-width: 300px;
+}
+.searchbar-input {
+  border: none;
+  outline: none;
+}
+.loign-text{
+  @media #{$lg} {
+    display: inline-block;
+  }
+  display: none;
 }

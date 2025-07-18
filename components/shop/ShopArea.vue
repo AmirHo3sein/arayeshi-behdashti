@@ -79,6 +79,21 @@ const clearQuery = () => {
   // Use history.replaceState to update the URL without query
   window.history.replaceState(null, '', newUrl);
 };
+const activeSort = computed(() => route.query?.order)
+
+function sort(sort) {
+  const currentQuery = {...route.query};
+  if (sort) {
+    currentQuery['order'] = sort;
+    router.replace({query: currentQuery});
+    filters.order = sort
+  } else {
+    delete currentQuery['order']
+    delete filters.order
+  }
+  router.replace({query: currentQuery});
+
+}
 
 function handleResetFilters() {
   clearQuery()
@@ -95,6 +110,7 @@ function handleResetFilters() {
   <SpinnerLoading :is-loading="status === 'pending'"/>
   <section class="shop__area pt-100 pb-100" v-if="data">
     <div class="container">
+
       <div class="row">
         <div v-if="!shop_right" class="col-xl-3 col-lg-3 col-md-4">
           <ShopSidebar @handle-brand="handleBrand" @handle-category="handleCategory" @handle-price="handlePrice"
@@ -102,6 +118,55 @@ function handleResetFilters() {
         </div>
         <div class="col-xl-9 col-lg-9 col-md-8">
           <div class="shop__content-area">
+            <div class="col-12 position-relative mb-3">
+              <div class="d-flex gap-3 flex-wrap align-items-center">
+
+                <div class="d-flex align-items-center gap-2">
+                  <i class="fa fa-solid fa-sort-amount-down"></i>
+                  <p class="mb-0">مرتب سازی:</p>
+                </div>
+
+                <!-- Sort Options -->
+                <ul class="d-flex flex-wrap flex-md-nowrap text-secondary gap-3 list-unstyled mb-0">
+                  <li>
+                    <p @click="sort(null)" class="mb-0 text-decoration-none cursor-pointer"
+                       :class="{'text-burgundy':!activeSort}">
+                      جدیدترین
+                    </p>
+                  </li>
+                  <li>
+                    <p @click="sort('view DESC')" class="mb-0 text-decoration-none cursor-pointer"
+                       :class="{'text-burgundy': activeSort === 'view DESC'}">
+                      پربازدیدترین
+                    </p>
+                  </li>
+                  <li>
+                    <p @click="sort('sale ASC')" class="mb-0 text-decoration-none cursor-pointer"
+                       :class="{'text-burgundy': activeSort === 'sale ASC'}">
+                      پرفروش‌ترین‌
+                    </p>
+                  </li>
+                  <li>
+                    <p @click="sort('price ASC')" class="mb-0 text-decoration-none cursor-pointer"
+                       :class="{'text-burgundy': activeSort === 'price ASC'}">
+                      ارزان‌ترین
+                    </p>
+                  </li>
+                  <li>
+                    <p @click="sort('price DESC')" class="mb-0 text-decoration-none cursor-pointer"
+                       :class="{'text-burgundy': activeSort === 'price DESC'}">
+                      گران‌ترین
+                    </p>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Product Count -->
+              <p class="position-absolute top-0 start-0 text-secondary d-none d-lg-block">
+                {{ totalCount }} محصول
+              </p>
+            </div>
+
             <!--                    <div class="shop__header d-sm-flex justify-content-between align-items-center mb-40">-->
             <!--                        <div class="shop__header-left">-->
             <!--                            <div class="show-text">-->

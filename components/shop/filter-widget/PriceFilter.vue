@@ -54,7 +54,7 @@ function onChangeRange(value) {
 
 <style scoped>
 :deep(.slider-handle) {
-  left: auto !important;
+  right: auto !important;
 }
 
 </style>

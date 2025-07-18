@@ -1,231 +1,170 @@
 <template>
-  <div>
-    <!-- Promotional Banner -->
-    <PromotionalBanner />
+  <!--  <client-only>-->
+  <header>
+    <PromotionalBanner/>
+    <div id="header-sticky" :class="`header__area header__white box-25 ${isSticky ? 'sticky' : ''}`">
 
-    <!-- Main Header -->
-    <header class="new-header" :class="{ 'sticky': isSticky }">
-      <!-- Top Header Section -->
-      <div class="header-top">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <!-- Logo Section -->
-            <div class="col-lg-3 col-md-4 col-6">
-              <div class="logo-section">
-                <nuxt-link href="/" class="logo-link">
-                  <img src="~/assets/img/logo/lavora-logo.png" alt="لاوورا" class="header-logo-img">
-                  <span class="header-logo-text">لاوورا</span>
-                </nuxt-link>
-              </div>
+      <div>
+
+        <div class="d-flex justify-content-between position-relative">
+          <div @click.prevent="handleOffcanvas" class="mobile-menu-btn d-lg-none">
+            <a href="#" class="mobile-menu-toggle"><i class="fas fa-bars"></i></a>
+          </div>
+          <div class="d-flex">
+            <div class="logo">
+              <nuxt-link href="/">
+                <img src="~/assets/img/logo/lavora-logo.png" alt="logo" style="width: 150px">
+              </nuxt-link>
             </div>
-
-            <!-- Search Section -->
-            <div class="col-lg-6 col-md-4 d-none d-md-block">
-              <div class="search-section">
-                <form class="search-form" @submit.prevent="handleSearch">
-                  <input
-                      type="text"
-                      class="search-input"
-                      placeholder="عبارت مورد نظرتان را جهت دستیابی وارد نمایید"
-                      v-model="searchQuery"
-                  >
-                  <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
+            <div class="search-container mt-3" >
+              <div class="border rounded-lg d-flex gap-2 align-items-center">
+                <button class="btn btn-sm mt-1">
+                      <i class="fas fa-search"></i>
                   </button>
-                </form>
+                <input type="text" class="searchbar-input" placeholder="جستجو ...">
+
               </div>
             </div>
+          </div>
 
-            <!-- Action Section -->
-            <div class="col-lg-3 col-md-4 col-6">
-              <div class="header-actions">
-                <div class="action-items">
-                  <!-- User Account -->
-                  <div class="action-item">
-                    <a href="#" class="action-link" @click.prevent="handleUserAction">
-                      <i class="fas fa-user"></i>
-                      <span class="action-text">ورود/ثبت‌نام</span>
+
+          <div>
+            <div
+                class="header__right p-relative d-flex justify-content-between justify-content-sm-end align-items-center ">
+
+              <div class="header__action">
+                <ul>
+                  <!--                    <li>-->
+                  <!--                      <a @click.prevent="handleOpenSearchBar" href="#" class="search-toggle">-->
+                  <!--                        <i class="fas fa-search"></i>-->
+                  <!--                      </a>-->
+                  <!--                    </li>-->
+                  <li v-if="token">
+                    <a href="#"><i class="fas fa-user"></i>
                     </a>
-                  </div>
+                    <!-- extra info start -->
+                    <extra-info/>
+                    <!-- extra info end -->
+                  </li>
+                  <li v-else>
 
-                  <!-- Shopping Cart -->
-                  <div class="action-item cart-item">
-                    <a href="#" class="action-link cart-link">
-                      <i class="fas fa-shopping-cart"></i>
-                      <span class="cart-count">{{ convertToPersianNumber(cart.cartProducts.length) }}</span>
-                    </a>
-                    <cart-mini/>
-                  </div>
-
-                  <!-- Mobile Menu Toggle -->
-                  <div class="action-item mobile-toggle d-md-none">
-                    <button class="mobile-menu-btn" @click="handleOffcanvas">
-                      <i class="fas fa-bars"></i>
+                    <button class="profile__info-btn" type="button" data-bs-toggle="modal"
+                            data-bs-target="#login_modal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" class="text-black mb-2"
+                           viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                              d="M9 2h9c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-2h2v2h9V4H9v2H7V4c0-1.1.9-2 2-2"></path>
+                        <path fill="currentColor"
+                              d="M10.09 15.59L11.5 17l5-5l-5-5l-1.41 1.41L12.67 11H3v2h9.67z"></path>
+                      </svg>
+                      <span class="text-black loign-text"> ورود/ ثبت نام</span>
                     </button>
-                  </div>
-                </div>
+
+
+                  </li>
+                  <li>
+                    <a href="#" class="cart">
+                      <i class="fas fa-cart-plus"></i>
+                      <span class="cart-number-2">{{ convertToPersianNumber(cart.totalCount) }}</span>
+                    </a>
+                    <!-- cart mini start -->
+                    <cart-mini/>
+                    <!-- cart mini end -->
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <!-- Mobile Search Row -->
-          <div class="row d-md-none">
-            <div class="col-12">
-              <div class="mobile-search-section">
-                <form class="search-form" @submit.prevent="handleSearch">
-                  <input
-                      type="text"
-                      class="search-input"
-                      placeholder="جستجو در لاوورا..."
-                      v-model="searchQuery"
-                  >
-                  <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </form>
-              </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row  align-items-center">
+          <div class="">
+            <div class="main-menu d-none d-lg-block p-relative">
+              <nav>
+                <menus/>
+              </nav>
             </div>
           </div>
+
+
         </div>
       </div>
+    </div>
+  </header>
+  <LoginModal/>
 
-      <!-- Navigation Menu -->
-      <div class="header-nav">
-        <div class="container-fluid">
-          <nav class="main-navigation">
-            <ul class="nav-menu d-none d-lg-flex">
-              <li v-for="(item, index) in menuData" :key="index" class="nav-item" :class="{ 'has-dropdown': item.hasDropdown }">
-                <nuxt-link :href="item.link" class="nav-link">
-                  {{ item.title }}
-                  <i v-if="item.hasDropdown" class="fas fa-angle-down dropdown-icon"></i>
-                </nuxt-link>
+  <!-- search popup start -->
+  <search-popup ref="search_popup"/>
+  <!-- search popup end -->
 
-                <!-- Dropdown Menu -->
-                <div v-if="item.hasDropdown && !item.megamenu" class="dropdown-menu">
-                  <ul class="dropdown-list">
-                    <li v-for="(subItem, subIndex) in item.dropdownItems" :key="subIndex">
-                      <nuxt-link :href="subItem.link" class="dropdown-link">
-                        {{ subItem.title }}
-                      </nuxt-link>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Mega Menu -->
-                <div v-if="item.hasDropdown && item.megamenu" class="mega-menu">
-                  <div class="mega-menu-content">
-                    <div class="mega-menu-columns">
-                      <div
-                          v-for="(column, colIndex) in item.dropdownItems"
-                          :key="colIndex"
-                          class="mega-menu-column"
-                      >
-                        <h6 class="mega-menu-title">{{ column.title }}</h6>
-                        <ul class="mega-menu-list">
-                          <li v-for="(subItem, subIndex) in column.dropdownMenu" :key="subIndex">
-                            <nuxt-link :href="subItem.link" class="mega-menu-link">
-                              {{ subItem.title }}
-                            </nuxt-link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <!-- Search Popup -->
-    <search-popup ref="search_popup"/>
-
-    <!-- Mobile Sidebar -->
-    <updated-mobile-menu ref="mobileMenu"/>
-
-    <!-- Login Modal -->
-    <login-modal ref="loginModal"/>
-  </div>
+  <!-- off canvas start -->
+  <off-canvas ref="offcanvas"/>
+  <!-- off canvas end -->
+  <!--  </client-only>-->
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import menuData from '~/mixins/menuData';
-import PromotionalBanner from '~/components/common/PromotionalBanner.vue';
+// external
+import {defineComponent} from 'vue';
+// import {useCartStore} from '~~/store/useCart';
+
+// internal
+import Menus from './Menus.vue';
 import CartMini from './header-com/CartMini.vue';
-import SearchPopup from '~/components/common/modals/SearchPopup.vue';
-import UpdatedMobileMenu from '~/components/common/UpdatedMobileMenu.vue';
-import LoginModal from '~/components/common/modals/LoginModal.vue';
-import { useGeneralStore } from '~/store/cart';
-import { usePersianNumbers } from '~/composables/convertNumbers';
+import ExtraInfo from './header-com/ExtraInfo.vue';
+import SearchPopup from '~~/components/common/modals/SearchPopup.vue';
+import OffCanvas from '~~/components/common/sidebar/OffCanvas.vue';
+import LoginModal from "~/components/common/modals/LoginModal.vue";
+import {useGeneralStore} from "~/store/cart";
+import {usePersianNumbers} from "~/composables/convertNumbers";
+import PromotionalBanner from "~/components/common/PromotionalBanner.vue";
+
+// interface
+interface SearchPopupComponentRef {
+  openSearchPopup(): void
+}
+
+interface OffCanvasComponentRef {
+  OpenOffcanvas(): void
+}
 
 export default defineComponent({
-  name: 'NewHeader',
-  components: {
-    PromotionalBanner,
-    CartMini,
-    SearchPopup,
-    UpdatedMobileMenu,
-    LoginModal,
-  },
-  mixins: [menuData],
+  components: {PromotionalBanner, LoginModal, Menus, CartMini, ExtraInfo, SearchPopup, OffCanvas},
   data() {
     return {
-      searchQuery: '',
       isSticky: false,
-    };
+      showSearch: false,
+    }
   },
   methods: {
-    handleSearch() {
-      if (this.searchQuery.trim()) {
-        // Navigate to search results page
-        this.$router.push(`/search?q=${encodeURIComponent(this.searchQuery)}`);
-      }
-    },
-    handleUserAction() {
-      if (this.token) {
-        // Handle logged in user actions
-        this.$router.push('/profile');
-      } else {
-        // Open login modal
-        const loginModal = this.$refs.loginModal as any;
-        loginModal.openModal();
-      }
-    },
-    handleOffcanvas() {
-      const mobileMenu = this.$refs.mobileMenu as any;
-      mobileMenu.OpenOffcanvas();
-    },
     handleSticky() {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 80) {
         this.isSticky = true;
       } else {
         this.isSticky = false;
       }
     },
+    handleOpenSearchBar() {
+      const searchPopupRef = this.$refs.search_popup as SearchPopupComponentRef
+      searchPopupRef.openSearchPopup()
+    },
+    handleOffcanvas() {
+      const offCanvas = this.$refs.offcanvas as OffCanvasComponentRef
+      offCanvas.OpenOffcanvas()
+    }
   },
   setup() {
-    const token = useCookie('authToken');
-    const cart = useGeneralStore();
-    const { convertToPersianNumber } = usePersianNumbers();
-
-    return {
-      token,
-      cart,
-      convertToPersianNumber,
-    };
+    // const state = useCartStore();
+    const token = useCookie('authToken')
+    const cart = useGeneralStore()
+    const {convertToPersianNumber} = usePersianNumbers()
+    return {token, cart, convertToPersianNumber}
   },
   mounted() {
-    window.addEventListener('scroll', this.handleSticky);
+    window.addEventListener("scroll", this.handleSticky);
   },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleSticky);
-  },
-});
+})
 </script>
-
-<style scoped>
-/* Styles are handled in assets/css/new-header.css */
-</style>

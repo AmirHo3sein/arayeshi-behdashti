@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-top" id="scroll" style="display: none;">
+  <div class="scroll-top " id="scroll" style="display: none;">
     <a href="#"><i class="fas fa-level-up-alt"></i></a>
   </div>
 </template>

@@ -252,6 +252,18 @@ p {
 .dark-soft-bg {
   background: #282828;
 }
+.bg-pink {
+  background-color: $pink;
+}
+.text-pink {
+  color: $pink;
+}
+.text-burgundy {
+  color: $burgundy;
+}
+.bg-burgundy {
+  background-color: $burgundy;
+}
 
 /*--
     - color
@@ -872,9 +884,9 @@ p {
   font-size: 15px;
   color: $white;
   list-style-type: none;
-  background: $theme-color;
+  background: $theme-2-color;
   margin-right: 20px;
-  border: 1px solid $theme-color;
+  border: 1px solid $theme-2-color;
   z-index: 999;
 }
 

@@ -12,6 +12,10 @@ export default defineNuxtConfig({
     head: {
       title: "eCommerce Nuxt",
       // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
+      htmlAttrs: {
+        dir: 'rtl',
+        lang: 'fa', // or any RTL language
+      },
       script: [
         {
           src: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js",
