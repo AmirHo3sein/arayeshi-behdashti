@@ -1,6 +1,8 @@
 <script setup>
 import {useMyFetch} from "~/composables/my-fetch";
-// import {useProductsStore} from "~/store/useProducts";
+import {useBreadcrumbStore} from "~/store/breadcrumb.js";
+
+const breadcrumbStore = useBreadcrumbStore();
 
 const options = {
   method: 'POST',
@@ -11,7 +13,7 @@ const options = {
 // Function to update the 'cat' query parameter without router.push
 const route = useRoute();
 const router = useRouter();
-const brandQuery = computed(()=>route.query?.brand)
+const brandQuery = computed(() => route.query?.brand)
 
 // Function to update specific query parameters without affecting others
 const updateQuery = (key, value) => {
@@ -23,18 +25,20 @@ const updateQuery = (key, value) => {
   // Use router.replace to update the URL without reloading
   router.replace({ query: currentQuery });
 };
+
 const brands = ref()
 const {data, status, error} = await useMyFetch('product/brand/list', options)
 if (data.value) {
-  brands.value = data.value.data.list
+  brands.value = data.value.data.list;
+  // Update the store with brand mappings
+  breadcrumbStore.setBrandMappings(data.value.data.list);
 }
 
 const emit = defineEmits(['handleBrand'])
 function handleBrand(brand) {
-  updateQuery('brand',brand.slug)
-  emit("handleBrand",brand)
+  updateQuery('brand', brand.slug)
+  emit("handleBrand", brand)
 }
-
 </script>
 
 

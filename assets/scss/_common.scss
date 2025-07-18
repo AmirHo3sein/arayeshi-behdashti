@@ -782,7 +782,7 @@ p {
       }
 
       & .breadcrumb-item {
-        font-size: 12px;
+        font-size: 14px;
         text-transform: capitalize;
         color: $black-soft;
         font-weight: 500;
@@ -792,12 +792,15 @@ p {
             color: $theme-color;
           }
         }
-
+        &::before {
+          color: transparent;
+          display: none;
+        }
         &.active {
           color: $black-2;
-
           &::before {
-            color: $black-soft;
+            color: transparent;
+            display: none;
           }
         }
       }

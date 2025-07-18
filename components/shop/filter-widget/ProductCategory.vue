@@ -1,13 +1,15 @@
 <script setup>
-
 import {useMyFetch} from "~/composables/my-fetch";
+import {useBreadcrumbStore} from "~/store/breadcrumb.js";
+
+const breadcrumbStore = useBreadcrumbStore();
 
 const options = {
   method: 'POST',
 }
 const route = useRoute();
 const router = useRouter();
-const categoryQuery =computed(()=>route.query?.cat)
+const categoryQuery = computed(() => route.query?.cat)
 
 // Function to update specific query parameters without affecting others
 const updateQuery = (key, value) => {
@@ -23,18 +25,18 @@ const updateQuery = (key, value) => {
 const categories = ref()
 const {data, status, error} = await useMyFetch('product/category/list', options)
 if (data.value) {
-  categories.value = data.value.data.list
+  categories.value = data.value.data.list;
+  // Update the store with category mappings
+  breadcrumbStore.setCategoryMappings(data.value.data.list);
 }
 
 const emit = defineEmits(['handleCategory'])
 
 function handleCategory(category) {
-  updateQuery('cat',category.slug)
+  updateQuery('cat', category.slug)
   emit("handleCategory", category)
 }
-
 </script>
-
 
 <template>
   <div class="sidebar__widget mb-55">

@@ -108,7 +108,7 @@ function handleResetFilters() {
 <template>
 
   <SpinnerLoading :is-loading="status === 'pending'"/>
-  <section class="shop__area pt-100 pb-100" v-if="data">
+  <section class="shop__area pt-35 pb-100" v-if="data">
     <div class="container">
 
       <div class="row">

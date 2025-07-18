@@ -2,7 +2,7 @@
   <!--  <client-only>-->
   <header>
     <PromotionalBanner/>
-    <div id="header-sticky" :class="`header__area header__white box-25 ${isSticky ? 'sticky' : ''}`">
+    <div id="header-sticky" :class="`header__area header__white box-25 ${isSticky ? 'sticky' : ''}`" class="border-bottom">
 
       <div>
 

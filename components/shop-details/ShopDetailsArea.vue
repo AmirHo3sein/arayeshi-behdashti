@@ -1,6 +1,6 @@
 <template>
  <section class="shop__area pb-65">
-      <div class="shop__top grey-bg-6 pt-100 pb-90">
+      <div class="shop__top grey-bg-6 pt-30 pb-90">
           <div class="container">
               <div class="row">
                   <div class="col-xl-6 col-lg-6">
