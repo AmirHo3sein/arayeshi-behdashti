@@ -7,7 +7,7 @@ export const useBreadcrumbs = () => {
     const routeMappings = {
         '/': 'لاوورا',
         '/shop': 'فروشگاه',
-        '/product-details': 'جزئیات محصول',
+        '/product-details': 'فروشگاه',
         '/cart': 'سبد خرید',
         '/checkout': 'تسویه حساب',
         '/account': 'حساب کاربری',
@@ -74,7 +74,7 @@ export const useBreadcrumbs = () => {
                     title = 'فروشگاه';
                     break;
                 case 'product-details':
-                    title = 'جزئیات محصول';
+                    title = 'فروشگاه';
                     break;
                 case 'cart':
                     title = 'سبد خرید';

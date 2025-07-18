@@ -17,6 +17,7 @@
                     <nuxt-link
                         v-if="crumb.path && index !== breadcrumbs.length - 1"
                         :to="crumb.path"
+                        class="text-decoration-none"
                     >
                       {{ crumb.title }}
                       <i class="fa fa-solid fa-chevron-left px-1"></i>
@@ -34,8 +35,6 @@
 </template>
 
 <script setup>
-import bg from '~/assets/img/bg/img.png';
-
 const props = defineProps({
   title: {
     type: String,
@@ -52,10 +51,8 @@ const props = defineProps({
 });
 
 const route = useRoute();
-
 const { generateBreadcrumbs } = useBreadcrumbs();
 
-// Generate breadcrumbs based on current route
 const breadcrumbs = ref([]);
 
 // Initialize breadcrumbs
@@ -72,5 +69,12 @@ watch(() => [route.path, route.query], async () => {
   if (props.customBreadcrumbs.length === 0) {
     breadcrumbs.value = await generateBreadcrumbs(route, props.title);
   }
-}, { deep: true });
+}, {deep: true});
+
+// Watch for custom breadcrumbs changes
+watch(() => props.customBreadcrumbs, (newBreadcrumbs) => {
+  if (newBreadcrumbs.length > 0) {
+    breadcrumbs.value = newBreadcrumbs;
+  }
+}, {deep: true});
 </script>
